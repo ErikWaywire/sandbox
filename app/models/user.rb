@@ -5,5 +5,5 @@ class User < ActiveRecord::Base
   validates :email, :presence => true
   validates :bio, :presence => true
 
-  has_many :posts
+  has_many :posts, :dependent => :destroy
 end
