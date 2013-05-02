@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  http_basic_authenticate_with :name => "dhh", :password => "secret", :except => [:index, :show]
+  # http_basic_authenticate_with :name => "dhh", :password => "secret", :except => [:index, :show]
   # GET /users
   # GET /users.json
   def index
@@ -25,12 +25,17 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.json
   def new
-    @user = User.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @user }
+    @user = User.new(params[:user])
+    if @user.save
+      redirect_to @user
+    else
+      render 'new'
     end
+
+    # respond_to do |format|
+    #   format.html # new.html.erb
+    #   format.json { render json: @user }
+    # end
   end
 
   # GET /users/1/edit

@@ -1,7 +1,16 @@
 <% provide(:title, @user.name) %>
 <%- model_class = User -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <h1>
+          <%= @user.name %>
+          <%= gravatar_for @user %>
+        </h1>
+      </section>
+    </aside>
+  </div>
 </div>
 
 <dl class="dl-horizontal">
