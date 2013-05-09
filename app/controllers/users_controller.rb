@@ -1,14 +1,16 @@
 class UsersController < ApplicationController
+  before_filter :signed_in_user, only: [:index, :edit, :update]
+  before_filter :correct_user, only: [:edit, :update]
   # http_basic_authenticate_with :name => "dhh", :password => "secret", :except => [:index, :show]
   # GET /users
   # GET /users.json
   def index
     @users = User.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
-    end
+    # respond_to do |format|
+    #   format.html # index.html.erb
+    #   format.json { render json: @users }
+    # end
   end
 
   # GET /users/1
@@ -35,7 +37,6 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
   end
 
   # POST /users
@@ -87,4 +88,18 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+    def signed_in_user
+      unless signed_in?
+        store_location
+        redirect_to signin_url, notice: "Please sign in."
+      end  
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user)
+    end  
 end
