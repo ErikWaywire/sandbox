@@ -1,15 +1,19 @@
 class PostsController < ApplicationController
-  # http_basic_authenticate_with :name => "dhh", :password => "secret", :only => :destroy
+  before_filter :signed_in_user
   def create
-    @user = User.find(params[:user_id])
-    @post = @user.posts.create(params[:post])
-    redirect_to user_path(@user)
+    @post = current_user.posts.build(params[:post])
+    if @post.save
+      flash[:success] = "Post created!"
+      redirect_to root_url
+    else
+      render 'static_pages/home'
+    end
   end
 
   def destroy
-  	@user = User.find(params[:user_id])
-    @post = @user.posts.find(params[:id])
-    @post.destroy
-    redirect_to user_path(@user)
+  	# @user = User.find(params[:user_id])
+   #  @post = @user.posts.find(params[:id])
+   #  @post.destroy
+   #  redirect_to user_path(@user)
   end
 end

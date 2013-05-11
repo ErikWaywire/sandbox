@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.paginate(page: params[:page])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -91,13 +92,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_url, notice: "Please sign in."
-      end  
-    end
 
     def correct_user
       @user = User.find(params[:id])

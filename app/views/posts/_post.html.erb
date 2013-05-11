@@ -1,12 +1,9 @@
-<p>
-<b>Title:</b>
-<%= post.title %>
-</p>
-
-<p>
-<b>Post:</b>
-<%= post.body %>
-</p>
+<li>
+  <span class="content"><%= post.body %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(post.created_at) %> ago.
+  </span>
+</li>
 <p>
 <%= link_to 'Destroy Post', [post.user, post],
            :confirm => 'Are you sure?',

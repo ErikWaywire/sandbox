@@ -10,6 +10,15 @@
         </h1>
       </section>
     </aside>
+    <div class="span8">
+    <% if @user.posts.any? %>
+      <h3>Posts (<%= @user.posts.count %>)</h3>
+      <ol class="posts">
+        <%= render @posts %>
+      </ol>
+      <%= will_paginate @posts %>
+    <% end %>
+  </div>
   </div>
 </div>
 
@@ -21,12 +30,6 @@
   <dt><strong><%= model_class.human_attribute_name(:bio) %>:</strong></dt>
   <dd><%= @user.bio %></dd>
 </dl>
-
-<h3>Posts:</h3>
-<%= render @user.posts %>
-
-<h4>Add a post:</h4>
-<%= render "posts/form" %>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
