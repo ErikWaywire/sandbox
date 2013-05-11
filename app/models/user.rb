@@ -15,6 +15,11 @@ class User < ActiveRecord::Base
 
   has_many :posts, :dependent => :destroy
 
+  def feed
+    # This is preliminary. See "Following users" for the full implementation.
+    Post.where("user_id = ?", id)
+  end
+
   private
 
     def create_remember_token

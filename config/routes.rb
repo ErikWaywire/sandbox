@@ -8,7 +8,9 @@ Sandbox::Application.routes.draw do
 
   match '/signup', to: 'users#new'
 
-  resources :users
+  resources :users do
+    resources :posts
+  end
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :posts, only: [:create, :destroy]
