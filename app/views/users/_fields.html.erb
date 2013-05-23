@@ -1,7 +1,9 @@
 <%= render 'shared/error_messages', object: f.object %>
 
+<% unless session[:omniauth] && !@user %>
 <%= f.label :name %>
 <%= f.text_field :name %>
+<% end %>
 
 <%= f.label :email %>
 <%= f.text_field :email %>
@@ -12,5 +14,7 @@
 <%= f.label :password_confirmation, "Confirmation" %>
 <%= f.password_field :password_confirmation %>
 
+<% unless session[:omniauth] && !@user %>
 <%= f.label :bio %>
 <%= f.text_area :bio %>
+<% end %>
