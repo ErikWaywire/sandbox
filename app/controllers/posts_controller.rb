@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :signed_in_user, only: [:create, :destroy]
+  before_filter :signed_in_user, only: [:create, :destroy, :show]
   before_filter :correct_user, only: :destroy
 
   def create
@@ -16,6 +16,14 @@ class PostsController < ApplicationController
   def destroy
    @post.destroy
    redirect_to root_url
+  end
+
+  def show
+    @post = Post.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @user }
+    end
   end
 
   private
