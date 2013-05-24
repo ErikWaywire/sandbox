@@ -29,7 +29,8 @@ class UsersController < ApplicationController
     if session[:omniauth]
       omniauth = session[:omniauth]
       @user.name = omniauth['info']['name']
-      @user.bio = omniauth['info']['description']
+      @user.bio = omniauth['info']['description'] || omniauth['info']['location']
+      @user.email = omniauth['info']['email'] if omniauth['info']['email']
       @user.apply_omniauth(omniauth)
       session[:omniauth] = nil
     end  
