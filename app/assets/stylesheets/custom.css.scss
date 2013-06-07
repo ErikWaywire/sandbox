@@ -247,3 +247,22 @@ aside {
     margin-bottom: 5px;
   }
 }
+
+/* random */
+
+.imgContainer {
+  text-align: justify;
+  min-width: 600px;
+  display: block;
+}
+
+.imgContainer div {
+  display: inline-block;
+}
+
+.stretch {
+    width: 100%;
+    display: inline-block;
+    font-size: 0;
+    line-height: 0
+}
