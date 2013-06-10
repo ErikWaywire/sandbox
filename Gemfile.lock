@@ -51,6 +51,11 @@ GEM
     coffee-script-source (1.6.2)
     commonjs (0.2.6)
     diff-lcs (1.2.4)
+    embedly (1.5.6)
+      json
+      oauth
+      querystring
+      typhoeus
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -112,6 +117,7 @@ GEM
       omniauth-oauth (~> 1.0)
     pg (0.12.2)
     polyglot (0.3.3)
+    querystring (0.1.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -179,6 +185,9 @@ GEM
       actionpack (>= 3.1)
       execjs
       railties (>= 3.1)
+    typhoeus (0.4.2)
+      ffi (~> 1.0)
+      mime-types (~> 1.18)
     tzinfo (0.3.37)
     uglifier (2.0.1)
       execjs (>= 0.3.0)
@@ -196,6 +205,7 @@ DEPENDENCIES
   bootstrap-will_paginate (= 0.0.6)
   capybara (= 1.1.2)
   coffee-rails (~> 3.2.1)
+  embedly
   factory_girl_rails (= 4.1.0)
   faker (= 1.0.1)
   jquery-rails

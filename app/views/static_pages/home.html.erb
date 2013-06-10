@@ -31,11 +31,18 @@
     <%= link_to "Facebook", "auth/facebook", class: "btn btn-large" %>
 	</div>
   <div class="imgContainer">
-  	<%= image_tag("erik_small.jpg", alt: "Erik") %>
-    <%= image_tag("erik_small.jpg", alt: "Erik") %>
-    <%= image_tag("erik_small.jpg", alt: "Erik") %>
-    <%= image_tag("erik_small.jpg", alt: "Erik") %>
-    <%= image_tag("erik_small.jpg", alt: "Erik") %>
     <span class="stretch"></span>
   </div>
+
+  <script src="jquery.backstretch.min.js"></script>
+
+  <script>
+    $.backstretch([
+    "<%= asset_path('nyc.jpg') %>",
+    "<%= asset_path('nyc1.jpg') %>",
+    "<%= asset_path('nyc2.jpg') %>",
+    "<%= asset_path('seattle.jpg') %>",
+    "<%= asset_path('seattle1.jpg') %>"
+  ], {duration: 12000});
+  </script>
 <% end %>
