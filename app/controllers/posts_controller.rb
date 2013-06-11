@@ -5,6 +5,10 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(params[:post])
     if @post.save
+      if @user.linked_with_facebook?
+        x = Facebook_Service.new(@user.facebook_token)
+        x.add_post(@post) if @post
+      end
       flash[:success] = "Post created!"
       redirect_to root_url
     else

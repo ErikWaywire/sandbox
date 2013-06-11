@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130514184054) do
+ActiveRecord::Schema.define(:version => 20130611155424) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -45,11 +45,13 @@ ActiveRecord::Schema.define(:version => 20130514184054) do
     t.string   "name"
     t.text     "bio"
     t.string   "email"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "admin",           :default => false
+    t.boolean  "admin",                     :default => false
+    t.string   "facebook_token"
+    t.datetime "facebook_token_expires_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

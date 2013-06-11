@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :bio, :email, :name, :password, :password_confirmation
+  attr_accessible :bio, :email, :name, :password, :password_confirmation, :facebook_token, :facebook_token_expires_at
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
@@ -42,11 +42,19 @@ class User < ActiveRecord::Base
 
   def apply_omniauth(omniauth)
     authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
+    if omniauth['provider'] == 'facebook'
+      self.facebook_token = omniauth.credentials.token
+      self.facebook_token_expires_at = Time.at(omniauth.credentials.expires_at)
+    end  
   end
 
   def password_required?
     self.authentications.empty?
   end
+
+  def linked_with_facebook?
+    self.authentications.find_by_provider("facebook").nil?
+  end  
 
   private
 
