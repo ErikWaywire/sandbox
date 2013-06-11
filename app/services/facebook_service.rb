@@ -23,7 +23,7 @@ class FacebookService
     graph.delete_object('me', 'permissions')
   end
 
-  def add_post(post)
-    graph.put_connections('me', "calmmountain:add", "post" => "#{post_url(post)}")
+  def add_post(post, post_link)
+    graph.put_connections('me', "calmmountain:add", "post" => post_link)
   end
 end
