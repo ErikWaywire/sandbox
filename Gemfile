@@ -11,6 +11,7 @@ gem 'omniauth-twitter'
 gem 'random_password_generator'
 gem 'embedly'
 gem 'koala'
+gem 'delayed_job_active_record'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

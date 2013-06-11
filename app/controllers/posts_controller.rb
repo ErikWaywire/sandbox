@@ -8,7 +8,7 @@ class PostsController < ApplicationController
       if !current_user.facebook_token.nil?
         x = FacebookService.new(current_user.facebook_token)
         post_link = post_url(@post)
-        x.add_post(@post, post_link) if @post
+        x.delay.add_post(@post, post_link) if @post
       end
       flash[:success] = "Post created!"
       redirect_to root_url
