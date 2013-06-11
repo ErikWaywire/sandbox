@@ -24,7 +24,6 @@ class FacebookService
   end
 
   def add_post(post)
-    object_value = 'post'
-    graph.put_connections('me', "calmmountain:add", object_value => post_url(post))
+    graph.put_connections('me', "calmmountain:add", "post" => "#{post_url(post)}")
   end
 end
