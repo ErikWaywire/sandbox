@@ -12,6 +12,7 @@ gem 'random_password_generator'
 gem 'embedly'
 gem 'koala'
 gem 'delayed_job_active_record'
+gem 'twitter-bootstrap-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -32,7 +33,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem "therubyracer"
   gem "less-rails"
-  gem 'twitter-bootstrap-rails'
+
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
